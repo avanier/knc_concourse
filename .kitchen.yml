@@ -1,20 +1,32 @@
 ---
 driver:
   name: vagrant
+  provider: libvirt
+  customize:
+    cpus: 2
+
+transport:
+  name: sftp
 
 provisioner:
   name: chef_zero
   always_update_cookbooks: true
 
-verifier:
-  name: inspec
-
 platforms:
-  - name: ubuntu-16.04
   - name: centos-7.3
+    driver:
+      box: "centos/7"
 
 suites:
-  - name: default
+  - name: worker
     run_list:
       - recipe[knc_concourse::default]
     attributes:
+      concourse:
+        run_web: false
+  # - name: web
+  #   run_list:
+  #     - recipe[knc_concourse::default]
+  #   attributes:
+  #     concourse:
+  #       run_worker: false

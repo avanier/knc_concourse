@@ -16,3 +16,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+include_recipe "::binary"
+include_recipe "::web" if node['concourse']['run_web']
+include_recipe "::worker" if node['concourse']['run_worker']
