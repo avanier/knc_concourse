@@ -23,7 +23,7 @@ if node['concourse']['worker']['CONCOURSE_BAGGAGECLAIM_VOLUMES']
   end
 end
 
-['CONCOURSE_WORKER_PRIVATE_KEY', 'CONCOURSE_TSA_PUBLIC_KEY'].each do |k|
+%w[CONCOURSE_WORKER_PRIVATE_KEY CONCOURSE_TSA_PUBLIC_KEY].each do |k|
   directory File.dirname(node['concourse']['worker'][k]) do
     recursive true
     mode '750'

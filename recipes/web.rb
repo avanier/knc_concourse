@@ -6,7 +6,7 @@ node['concourse']['web'].each do |k, v|
   web_conf[k] = web_secrets[k] if v == '___FULLFILLED_BY_DATABAG___'
 end
 
-['CONCOURSE_TSA_HOST_KEY', 'CONCOURSE_TSA_AUTHORIZED_KEYS', 'CONCOURSE_SESSION_SIGNING_KEY'].each do |k|
+%w[CONCOURSE_TSA_HOST_KEY CONCOURSE_TSA_AUTHORIZED_KEYS CONCOURSE_SESSION_SIGNING_KEY].each do |k|
   directory File.dirname(node['concourse']['web'][k]) do
     recursive true
     mode '750'
