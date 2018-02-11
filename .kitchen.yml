@@ -18,15 +18,17 @@ platforms:
       box: "centos/7"
 
 suites:
-  - name: worker
-    run_list:
-      - recipe[knc_concourse::default]
+  - name: concourse
+    data_bags_path: "fixtures/data_bags" 
+    driver:
+      network:
+        - ["forwarded_port", {guest: 8080, host: 8080}]
     attributes:
       concourse:
-        run_web: false
-  # - name: web
-  #   run_list:
-  #     - recipe[knc_concourse::default]
-  #   attributes:
-  #     concourse:
-  #       run_worker: false
+        web:
+          CONCOURSE_LOG_LEVEL: debug
+      postgresql:
+        password:
+          postgres: supersecureherpderp
+    run_list:
+      - recipe[knc_concourse::default]
