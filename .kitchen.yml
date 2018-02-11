@@ -27,8 +27,5 @@ suites:
       concourse:
         web:
           CONCOURSE_LOG_LEVEL: debug
-      postgresql:
-        password:
-          postgres: supersecureherpderp
     run_list:
       - recipe[knc_concourse::default]
