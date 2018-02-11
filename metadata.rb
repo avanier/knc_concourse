@@ -8,7 +8,7 @@ version '0.1.0'
 chef_version '>= 12.1' if respond_to?(:chef_version)
 
 source_url 'https://github.com/avanier/knc_concourse'
-issues_url File.join(issues_url, 'issues')
+issues_url 'https://github.com/avanier/knc_concourse/issues'
 
 supports 'centos', '>= 7'
 
