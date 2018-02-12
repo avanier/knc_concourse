@@ -16,9 +16,6 @@ platforms:
   - name: centos-7.3
     driver:
       box: "centos/7"
-  - name: rhel
-    driver:
-      box: "generic/rhel7"
 
 suites:
   - name: concourse
