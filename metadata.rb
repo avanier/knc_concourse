@@ -13,3 +13,4 @@ issues_url 'https://github.com/avanier/knc_concourse/issues'
 supports 'centos', '>= 7'
 
 depends 'postgresql', '~> 6.1.1'
+depends 'firewall', '~> 2.6.3'
