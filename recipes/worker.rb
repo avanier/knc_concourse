@@ -82,20 +82,6 @@ systemd_unit 'concourse-worker.service' do
   action :create
 end
 
-firewall_rule 'concourse-garden' do
-  protocol  :tcp
-  port      node['concourse']['worker']['CONCOURSE_GARDEN_BIND_PORT']
-  command   :allow
-  not_if    { node['concourse']['no_firewall'] }
-end
-
-firewall_rule 'concourse-baggageclaim' do
-  protocol  :tcp
-  port      node['concourse']['worker']['CONCOURSE_BAGGAGECLAIM_BIND_PORT']
-  command   :allow
-  not_if    { node['concourse']['no_firewall'] }
-end
-
 service 'concourse-worker' do
   action %i[enable start]
 end

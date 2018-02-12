@@ -70,20 +70,6 @@ systemd_unit 'concourse-web.service' do
   action :create
 end
 
-firewall_rule 'concourse-atc' do
-  protocol  :tcp
-  port      node['concourse']['web']['CONCOURSE_BIND_PORT']
-  command   :allow
-  not_if    { node['concourse']['no_firewall'] }
-end
-
-firewall_rule 'concourse-tsa' do
-  protocol  :tcp
-  port      node['concourse']['web']['CONCOURSE_TSA_BIND_PORT']
-  command   :allow
-  not_if    { node['concourse']['no_firewall'] }
-end
-
 service 'concourse-web' do
   action %i[enable start]
 end
