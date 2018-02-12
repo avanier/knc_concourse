@@ -16,8 +16,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-unless node['family'] == 'redhat'
-  raise 'this cookbook is only compatible with RHEL/CentOS/Fedora'
+unless node['platform_family'] == 'rhel'
+  raise "this cookbook is only compatible with RHEL/CentOS/Fedora\nyour OS is #{node['family']}"
 end
 
 include_recipe '::binary'

@@ -16,9 +16,6 @@ platforms:
   - name: centos-7.3
     driver:
       box: "centos/7"
-  - name: fedora-27
-    driver:
-      box: "generic/fedora27"
   - name: rhel
     driver:
       box: "generic/rhel7"
