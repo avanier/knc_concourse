@@ -1,6 +1,6 @@
 default['concourse']['run_worker'] = true
 
-default['concourse']['worker_data_bag'] = 'concourse/worker-secrets'
+default['concourse']['worker']['data_bag'] = 'concourse/worker-secrets'
 
 default['concourse']['worker']['CONCOURSE_BAGGAGECLAIM_BIND_PORT'] = 7788
 default['concourse']['worker']['CONCOURSE_BAGGAGECLAIM_DRIVER'] = 'btrfs'

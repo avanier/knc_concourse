@@ -1,6 +1,6 @@
 default['concourse']['run_web'] = true
 
-default['concourse']['web_data_bag'] = 'concourse/web-secrets'
+default['concourse']['web']['data_bag'] = 'concourse/web-secrets'
 
 default['concourse']['web']['CONCOURSE_BASIC_AUTH_PASSWORD'] = '___FULLFILLED_BY_DATABAG___'
 default['concourse']['web']['CONCOURSE_BASIC_AUTH_USERNAME'] = '___FULLFILLED_BY_DATABAG___'
