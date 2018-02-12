@@ -1,6 +1,6 @@
 worker_conf = DeepMerge.safe_dup(node['concourse']['worker'])
-web_secrets = data_bag_item(*node['concourse']['web_data_bag'].split('/'))
-worker_secrets = data_bag_item(*node['concourse']['worker_data_bag'].split('/'))
+web_secrets = data_bag_item(*node['concourse']['web']['data_bag'].split('/'))
+worker_secrets = data_bag_item(*node['concourse']['worker']['data_bag'].split('/'))
 
 if node['concourse']['worker']['CONCOURSE_WORK_DIR']
   directory node['concourse']['worker']['CONCOURSE_WORK_DIR'] do

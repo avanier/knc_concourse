@@ -1,6 +1,6 @@
 web_conf = DeepMerge.safe_dup(node['concourse']['web'])
-web_secrets = data_bag_item(*node['concourse']['web_data_bag'].split('/'))
-worker_secrets = data_bag_item(*node['concourse']['worker_data_bag'].split('/'))
+web_secrets = data_bag_item(*node['concourse']['web']['data_bag'].split('/'))
+worker_secrets = data_bag_item(*node['concourse']['worker']['data_bag'].split('/'))
 
 node['concourse']['web'].each do |k, v|
   web_conf[k] = web_secrets[k] if v == '___FULLFILLED_BY_DATABAG___'

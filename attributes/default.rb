@@ -6,3 +6,5 @@ default['concourse']['install_location'] = '/usr/local/bin'
 
 default['concourse']['user'] = 'concourse'
 default['concourse']['group'] = 'concourse'
+
+default['concourse']['no_firewall'] = false

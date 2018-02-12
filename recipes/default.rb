@@ -24,3 +24,4 @@ include_recipe '::binary'
 include_recipe '::postgres' if node['concourse']['local_postgres']
 include_recipe '::web' if node['concourse']['run_web']
 include_recipe '::worker' if node['concourse']['run_worker']
+include_recipe '::firewall' unless node['concourse']['no_firewall']
