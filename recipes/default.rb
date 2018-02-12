@@ -16,6 +16,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+unless node['family'] == 'redhat'
+  raise 'this cookbook is only compatible with RHEL/CentOS/Fedora'
+end
+
 include_recipe '::binary'
 include_recipe '::postgres' if node['concourse']['local_postgres']
 include_recipe '::web' if node['concourse']['run_web']
