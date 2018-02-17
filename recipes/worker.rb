@@ -2,6 +2,10 @@ worker_conf = DeepMerge.safe_dup(node['concourse']['worker'])
 web_secrets = data_bag_item(*node['concourse']['web']['data_bag'].split('/'))
 worker_secrets = data_bag_item(*node['concourse']['worker']['data_bag'].split('/'))
 
+if node['concourse']['run_web']
+  worker_conf['CONCOURSE_PEER_IP'] = node['concourse']['worker']['CONCOURSE_PEER_IP'] || '127.0.0.1'
+end
+
 if node['concourse']['worker']['CONCOURSE_WORK_DIR']
   directory node['concourse']['worker']['CONCOURSE_WORK_DIR'] do
     owner node['concourse']['user']
@@ -22,7 +26,7 @@ if node['concourse']['worker']['CONCOURSE_BAGGAGECLAIM_VOLUMES']
   end
 end
 
-%w[CONCOURSE_WORKER_PRIVATE_KEY CONCOURSE_TSA_PUBLIC_KEY].each do |k|
+%w[CONCOURSE_TSA_WORKER_PRIVATE_KEY CONCOURSE_TSA_PUBLIC_KEY].each do |k|
   directory File.dirname(node['concourse']['worker'][k]) do
     recursive true
     mode '750'
@@ -31,7 +35,7 @@ end
   end
 end
 
-file node['concourse']['worker']['CONCOURSE_WORKER_PRIVATE_KEY'] do
+file node['concourse']['worker']['CONCOURSE_TSA_WORKER_PRIVATE_KEY'] do
   content worker_secrets['private_key']
   mode '640'
   owner 'root'

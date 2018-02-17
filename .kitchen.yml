@@ -27,5 +27,7 @@ suites:
       concourse:
         web:
           CONCOURSE_LOG_LEVEL: debug
+        web:
+          GARDEN_LOG_LEVEL: debug
     run_list:
       - recipe[knc_concourse::default]
