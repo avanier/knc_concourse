@@ -2,8 +2,6 @@
 
 Installs and configures Concourse `web` and/or `worker`.
 
-It's really just `worker` for now. :P
-
 ## Why you should not use this cookbook
 
 Concourse is officially supported under BOSH, or ran via Docker. Doing a binary
